@@ -1,0 +1,196 @@
+import React from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import {
+  ArrowDown,
+  Bike,
+  BookOpen,
+  Briefcase,
+  Coffee,
+  Dumbbell,
+  Globe,
+  GraduationCap,
+  MapPin,
+  Music,
+  ShoppingBag,
+  TerminalSquare,
+} from 'lucide-react';
+
+export default function App() {
+  const { scrollYProgress } = useScroll();
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const year = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [2004, 2020, 2023, 2025, 2026]);
+  const displayYear = useTransform(year, (y) => Math.round(y));
+
+  const titleAnim = {
+    initial: { opacity: 0, y: 15 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-100px' },
+    transition: { duration: 0.5, ease: 'easeOut' },
+  };
+
+  return (
+    <div className="bg-[#FDFBF7] text-[#0032A0] min-h-screen font-sans selection:bg-[#0032A0] selection:text-[#FDFBF7] relative overflow-hidden">
+      <motion.div className="fixed left-6 md:left-16 top-0 bottom-0 w-[2px] bg-[#0032A0] origin-top z-50 opacity-20" />
+      <motion.div className="fixed left-6 md:left-16 top-0 bottom-0 w-[2px] bg-[#0032A0] origin-top z-50" style={{ scaleY }} />
+
+      <div className="fixed left-10 md:left-24 top-1/2 -translate-y-1/2 z-50 pointer-events-none hidden md:block">
+        <div className="flex flex-col items-start gap-2">
+          <span className="text-[10px] font-bold tracking-[0.2em] uppercase origin-left rotate-90 translate-y-16 text-[#0032A0]/60">
+            Chronology
+          </span>
+          <motion.div className="font-serif text-3xl font-bold bg-[#FDFBF7] py-2 text-[#0032A0]">
+            {displayYear}
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="ml-14 md:ml-48 pr-6 md:pr-16 max-w-5xl pb-32">
+        <section className="min-h-screen flex flex-col justify-center pt-20">
+          <motion.div {...titleAnim}>
+            <h1 className="font-serif text-5xl md:text-8xl font-bold leading-tight mb-6">
+              Kyliann.<br />
+              <span className="italic font-light">A Timeline of Momentum.</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-light tracking-wide max-w-2xl border-l-4 border-[#0032A0] pl-6 py-2">
+              From the heart of France to the pulse of Asia.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="absolute bottom-12 left-14 md:left-48"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+          >
+            <ArrowDown size={32} className="text-[#0032A0]" />
+          </motion.div>
+        </section>
+
+        <section className="min-h-screen flex flex-col justify-center py-20">
+          <motion.div {...titleAnim} className="mb-12">
+            <span className="text-sm font-bold tracking-widest uppercase mb-2 block">01. The Engine</span>
+            <h2 className="font-serif text-4xl md:text-6xl font-bold">Roots & Energy</h2>
+          </motion.div>
+
+          <motion.p {...titleAnim} className="text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
+            Life happens at 200 beats per minute. Whether I&apos;m in the ring at the boxing gym, pushing limits on a run, or carving the roads on my motorcycle, I thrive on high-octane energy. But momentum is more than motion—it&apos;s balance, discipline, and joy in the process.
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: <Dumbbell size={24} />, title: 'Boxing', sub: 'Muay Thai & Running' },
+              { icon: <Bike size={24} />, title: 'Motorcycle', sub: 'Open Road' },
+              { icon: <Music size={24} />, title: 'Piano', sub: 'Jazz & Classical' },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="border border-[#0032A0] p-8 group hover:bg-[#0032A0] hover:text-[#FDFBF7] transition-colors duration-500 flex flex-col justify-between min-h-[200px]"
+              >
+                <div className="mb-8">{item.icon}</div>
+                <div>
+                  <h3 className="font-serif text-2xl font-bold mb-1">{item.title}</h3>
+                  <p className="text-sm tracking-widest uppercase opacity-80">{item.sub}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="min-h-screen flex flex-col justify-center py-20">
+          <motion.div {...titleAnim} className="mb-12">
+            <span className="text-sm font-bold tracking-widest uppercase mb-2 block">02. The Architecture of Thought</span>
+            <h2 className="font-serif text-4xl md:text-6xl font-bold">Academic Era</h2>
+          </motion.div>
+
+          <motion.p {...titleAnim} className="text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
+            Passion meets precision. Currently pursuing a double degree in Economics-Management and International Management at IAE Paris-Est. It is an exercise in discipline—mastering the mechanics of systems, numbers, and strategy while growing into a leader who can navigate complexity with clarity.
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div {...titleAnim} className="border-t-2 border-[#0032A0] pt-6">
+              <BookOpen size={28} className="mb-6" />
+              <h3 className="font-serif text-3xl font-bold mb-4">Economics & Management</h3>
+              <ul className="space-y-3 font-light">
+                <li className="flex items-center gap-3"><TerminalSquare size={14} /> Macro & Micro Economics</li>
+                <li className="flex items-center gap-3"><TerminalSquare size={14} /> Financial Diagnostics</li>
+                <li className="flex items-center gap-3"><TerminalSquare size={14} /> Quantitative Analysis</li>
+              </ul>
+            </motion.div>
+            <motion.div {...titleAnim} className="border-t-2 border-[#0032A0] pt-6">
+              <Globe size={28} className="mb-6" />
+              <h3 className="font-serif text-3xl font-bold mb-4">International Management</h3>
+              <ul className="space-y-3 font-light">
+                <li className="flex items-center gap-3"><TerminalSquare size={14} /> Global Market Strategy</li>
+                <li className="flex items-center gap-3"><TerminalSquare size={14} /> Cross-Cultural Leadership</li>
+                <li className="flex items-center gap-3"><TerminalSquare size={14} /> International Trade Law</li>
+              </ul>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="min-h-screen flex flex-col justify-center py-20">
+          <motion.div {...titleAnim} className="mb-12">
+            <span className="text-sm font-bold tracking-widest uppercase mb-2 block">03. On the Ground</span>
+            <h2 className="font-serif text-4xl md:text-6xl font-bold">Field Experience</h2>
+          </motion.div>
+
+          <motion.p {...titleAnim} className="text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
+            Theory is nothing without execution. I&apos;ve built adaptability through pure human interaction—educating as a teacher, reading the room as a bartender, and closing deals as a seller. Every role sharpened my ability to connect, negotiate, and adapt under pressure.
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#0032A0]">
+            {[
+              { icon: <GraduationCap size={24} />, title: 'Teacher', desc: 'Simplifying complexity. Fostering growth and structuring knowledge.' },
+              { icon: <Coffee size={24} />, title: 'Bartender', desc: 'Reading the room. Working under pressure with speed and precision.' },
+              { icon: <ShoppingBag size={24} />, title: 'Seller', desc: 'Closing the gap. Understanding needs, negotiating, and driving value.' },
+            ].map((role, i) => (
+              <motion.div
+                key={i}
+                {...titleAnim}
+                className={`p-8 ${i !== 2 ? 'border-b md:border-b-0 md:border-r border-[#0032A0]' : ''}`}
+              >
+                <div className="mb-6">{role.icon}</div>
+                <h3 className="font-serif text-2xl font-bold mb-3">{role.title}</h3>
+                <p className="font-light opacity-80">{role.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="min-h-screen flex flex-col justify-center py-20">
+          <motion.div {...titleAnim} className="mb-12">
+            <span className="text-sm font-bold tracking-widest uppercase mb-2 block">04. The Eastern Frontier</span>
+            <h2 className="font-serif text-4xl md:text-6xl font-bold">Present & Beyond</h2>
+          </motion.div>
+
+          <motion.p {...titleAnim} className="text-lg md:text-xl leading-relaxed max-w-3xl mb-16">
+            Currently navigating the neon-lit streets of Hong Kong. My days are defined by endless walks through the city&apos;s arteries and discovering the depth of local culinary heritage. But Hong Kong is only a chapter—my journey is a wider story of curiosity, movement, and global perspective.
+          </motion.p>
+
+          <motion.div {...titleAnim} className="flex flex-wrap gap-4">
+            {['Hong Kong (Basecamp)', 'Vietnam', 'Taiwan', 'Mainland China', 'Japan', 'Thailand', 'Korea'].map((country, i) => (
+              <div
+                key={i}
+                className="group relative border border-[#0032A0] rounded-full px-6 py-3 cursor-default overflow-hidden transition-colors duration-300 hover:bg-[#0032A0]"
+              >
+                <span className="relative z-10 flex items-center gap-2 group-hover:text-[#FDFBF7] transition-colors duration-300 font-medium">
+                  <MapPin size={16} />
+                  {country}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+        </section>
+      </div>
+    </div>
+  );
+}
