@@ -2,15 +2,173 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kyliann — a timeline of momentum, energy, study, work, and travel across France and Asia."
+    />
     <title>Kyliann | Timeline of Momentum</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="timeline-line"></div>
+    <div class="timeline-line progress"></div>
+
+    <aside class="time-indicator" aria-label="Timeline year indicator">
+      <span class="label">Chronology</span>
+      <div class="year-box" id="yearBox">2004</div>
+    </aside>
+
+    <main class="page-shell">
+      <section class="hero section">
+        <div class="content reveal">
+          <h1>
+            Kyliann.<br />
+            <span class="italic">A Timeline of Momentum.</span>
+          </h1>
+          <p class="lead">
+            From the heart of France to the pulse of Asia.
+          </p>
+        </div>
+
+        <div class="scroll-cue" aria-hidden="true">
+          <span>↓</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading reveal">
+          <span class="eyebrow">01. The Engine</span>
+          <h2>Roots &amp; Energy</h2>
+        </div>
+
+        <p class="intro reveal">
+          Life happens at 200 beats per minute. Whether I’m in the ring at the boxing gym,
+          pushing limits on a run, or carving the roads on my motorcycle, I thrive on
+          high-octane energy. But momentum is more than motion — it’s balance, discipline,
+          and joy in the process.
+        </p>
+
+        <div class="cards three reveal">
+          <article class="card">
+            <div class="icon">🏋️</div>
+            <h3>Boxing</h3>
+            <p>Muay Thai &amp; Running</p>
+          </article>
+          <article class="card">
+            <div class="icon">🏍️</div>
+            <h3>Motorcycle</h3>
+            <p>Open Road</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎹</div>
+            <h3>Piano</h3>
+            <p>Jazz &amp; Classical</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading reveal">
+          <span class="eyebrow">02. The Architecture of Thought</span>
+          <h2>Academic Era</h2>
+        </div>
+
+        <p class="intro reveal">
+          Passion meets precision. Currently pursuing a double degree in Economics-Management
+          and International Management at IAE Paris-Est. It is an exercise in discipline —
+          mastering the mechanics of systems, numbers, and strategy while growing into a leader
+          who can navigate complexity with clarity.
+        </p>
+
+        <div class="two-col reveal">
+          <article class="info-panel">
+            <div class="panel-icon">📘</div>
+            <h3>Economics &amp; Management</h3>
+            <ul>
+              <li>Macro &amp; Micro Economics</li>
+              <li>Financial Diagnostics</li>
+              <li>Quantitative Analysis</li>
+            </ul>
+          </article>
+
+          <article class="info-panel">
+            <div class="panel-icon">🌍</div>
+            <h3>International Management</h3>
+            <ul>
+              <li>Global Market Strategy</li>
+              <li>Cross-Cultural Leadership</li>
+              <li>International Trade Law</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading reveal">
+          <span class="eyebrow">03. On the Ground</span>
+          <h2>Field Experience</h2>
+        </div>
+
+        <p class="intro reveal">
+          Theory is nothing without execution. I’ve built adaptability through pure human
+          interaction — educating as a teacher, reading the room as a bartender, and closing
+          deals as a seller. Every role sharpened my ability to connect, negotiate, and adapt
+          under pressure.
+        </p>
+
+        <div class="cards three border-box reveal">
+          <article class="card mini">
+            <div class="icon">🎓</div>
+            <h3>Teacher</h3>
+            <p>Simplifying complexity. Fostering growth and structuring knowledge.</p>
+          </article>
+          <article class="card mini">
+            <div class="icon">☕</div>
+            <h3>Bartender</h3>
+            <p>Reading the room. Working under pressure with speed and precision.</p>
+          </article>
+          <article class="card mini">
+            <div class="icon">🛍️</div>
+            <h3>Seller</h3>
+            <p>Closing the gap. Understanding needs, negotiating, and driving value.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading reveal">
+          <span class="eyebrow">04. The Eastern Frontier</span>
+          <h2>Present &amp; Beyond</h2>
+        </div>
+
+        <p class="intro reveal">
+          Currently navigating the neon-lit streets of Hong Kong. My days are defined by
+          endless walks through the city’s arteries and discovering the depth of local culinary
+          heritage. But Hong Kong is only a chapter — my journey is a wider story of curiosity,
+          movement, and global perspective.
+        </p>
+
+        <div class="tags reveal">
+          <span>Hong Kong (Basecamp)</span>
+          <span>Vietnam</span>
+          <span>Taiwan</span>
+          <span>Mainland China</span>
+          <span>Japan</span>
+          <span>Thailand</span>
+          <span>Korea</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
   </body>
 </html>
+
+
